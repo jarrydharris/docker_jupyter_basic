@@ -28,7 +28,17 @@ git clone https://github.com/<your-username>/docker_jupyter_basic.git
 cd docker_jupyter_basic
 ```
 
-### 3. **Build the Docker image**:
+### 3. **Configure the image**
+
+Create a `.env` file and define `IMAGE_TAG` and `JUPYTER_PORT`:
+
+```bash
+echo -e "IMAGE_TAG=jupyter-basic\nJUPYTER_PORT=8888" > .env
+```
+
+This will set the environment variables needed to build and run the container.
+
+### 4. **Build the Docker image**
 
 Use the provided Makefile to build the Docker image:
 
@@ -36,7 +46,7 @@ Use the provided Makefile to build the Docker image:
 make build
 ```
 
-### 4. **Start the Jupyter Lab server**
+### 5. **Start the Jupyter Lab server**
 
 After building the image, you can start the Jupyter Lab server:
 
@@ -44,4 +54,4 @@ After building the image, you can start the Jupyter Lab server:
 make run
 ```
 
-This command runs the Docker container and starts Jupyter Lab, binding it to http://localhost:8888. Jupyter Lab will be accessible from your browser at this URL.
+This command runs the Docker container and starts Jupyter Lab, binding it to http://localhost:<JUPYTER_PORT>. Jupyter Lab will be accessible from your browser at this URL.
